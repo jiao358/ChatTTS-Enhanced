@@ -55,13 +55,16 @@ def main():
         config = read_config('config.ini')
         custom_server, ip_address, port = get_server_config(config)
         
-        # 添加错误处理
+        # 修改启动参数
         kwargs = {
-            "inbrowser": True,
-            "server_name": ip_address if custom_server else None,
-            "server_port": port if custom_server else None,
+            "inbrowser": False,  # 改为False，不自动打开浏览器
+            "server_name": "0.0.0.0",  # 允许远程访问
+            "server_port": port if custom_server else 7860,
+            "share": False  # 不使用gradio的分享功能
         }
-        demo.launch(**{k: v for k, v in kwargs.items() if v is not None})
+        
+        print(f"\n界面启动成功！请在浏览器中访问: http://{ip_address}:{kwargs['server_port']}\n")
+        demo.launch(**kwargs)
         
     except Exception as e:
         print(f"Error starting webui: {str(e)}")
