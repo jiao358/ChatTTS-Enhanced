@@ -1,0 +1,28 @@
+Chattts-Enhanced
+运行方法：
+1.python webui/webui.py
+2.pip install huggingface_hub
+2.1 export HF_ENDPOINT=https://hf-mirror.com  ///echo 'export HF_ENDPOINT=https://hf-mirror.com' >> ~/.bashrc
+安装方法：
+1.git clone https://github.com/jiao358/ChatTTS-Enhanced.git
+1.1 apt-get install -y git ffmpeg
+
+2. conda init -all 
+3. conda create -n Dlab python=3.10
+4. conda activate Dlab
+5. conda install pytorch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 pytorch-cuda=11.8 -c pytorch -c nvidia
+6. pip install resemble-enhance --no-deps
+7. pip install -r requirements.txt
+7.1 conda install -c conda-forge pynini==2.1.5
+8. pip install WeTextProcessing
+//运行过程中会用到爆脸的依赖
+  8.1 pip install huggingface_hub
+  8.2  export HF_ENDPOINT=https://hf-mirror.com
+  8.3 vi /Users/estela/work/ChatTTS-Enhanced/modules/enhance/enhancer/download.py  
+   替换 REPO_URL = "https://huggingface.co/ResembleAI/resemble-enhance"  
+   REPO_URL = "https://hf-mirror.com/ResembleAI/resemble-enhance"  
+  8.4 conda install git-lfs
+
+# 在项目根目录下创建必要的目录
+mkdir -p output_audio data
+chmod -R 755 output_audio data
